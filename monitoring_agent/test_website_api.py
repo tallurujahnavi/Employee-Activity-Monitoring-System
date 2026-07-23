@@ -1,0 +1,3 @@
+from website_service import start_website_monitor
+
+start_website_monitor()

@@ -1,0 +1,3 @@
+from application_service import start_application_monitor
+
+start_application_monitor()
