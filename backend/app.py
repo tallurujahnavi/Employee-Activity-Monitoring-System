@@ -35,6 +35,10 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Initialize Database
 init_db(app)
+from models.admin import Admin
+from services.auth_service import AuthService
+from utils.database import db
+
 with app.app_context():
     admin = Admin.query.filter_by(email="admin@example.com").first()
 
@@ -46,7 +50,7 @@ with app.app_context():
         )
         db.session.add(admin)
         db.session.commit()
-        print("✅ Default admin created.")
+        print("✅ Default admin created successfully!")
     else:
         print("✅ Default admin already exists.")
 app.register_blueprint(auth_bp)
