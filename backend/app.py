@@ -14,6 +14,10 @@ from routes.file_routes import file_bp
 from routes.usb_routes import usb_bp
 
 import models
+from models.admin import Admin
+from services.auth_service import AuthService
+from utils.database import db
+
 # Create Flask application
 app = Flask(__name__)
 
@@ -31,6 +35,20 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Initialize Database
 init_db(app)
+with app.app_context():
+    admin = Admin.query.filter_by(email="admin@example.com").first()
+
+    if not admin:
+        admin = Admin(
+            username="admin",
+            email="admin@example.com",
+            password=AuthService.hash_password("admin123")
+        )
+        db.session.add(admin)
+        db.session.commit()
+        print("✅ Default admin created.")
+    else:
+        print("✅ Default admin already exists.")
 app.register_blueprint(auth_bp)
 app.register_blueprint(employee_bp)
 app.register_blueprint(attendance_bp)
