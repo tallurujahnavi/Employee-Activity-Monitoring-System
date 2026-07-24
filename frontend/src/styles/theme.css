@@ -1,0 +1,145 @@
+:root {
+  --bg: #0f172a;
+  --sidebar: #111827;
+  --navbar: #111827;
+  --card: #1e293b;
+  --card-hover: #334155;
+  --text: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --primary: #2563eb;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #f59e0b;
+  --border: #374151;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Main Content */
+.main-content {
+  background: var(--bg);
+  min-height: 100vh;
+  color: var(--text);
+}
+
+/* Cards */
+.card {
+  background: var(--card) !important;
+  color: white !important;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+}
+
+.card:hover {
+  background: var(--card-hover) !important;
+  transition: 0.3s;
+}
+
+/* Tables */
+.table {
+  color: white !important;
+}
+
+.table-dark {
+  --bs-table-bg: #1e293b;
+  --bs-table-striped-bg: #243244;
+  --bs-table-hover-bg: #334155;
+  --bs-table-border-color: #374151;
+}
+
+/* Search/Input Boxes */
+.form-control {
+  background: #1e293b !important;
+  color: white !important;
+  border: 1px solid #334155 !important;
+}
+
+.form-control::placeholder {
+  color: #94a3b8 !important;
+}
+
+.form-control:focus {
+  background: #1e293b !important;
+  color: white !important;
+  border-color: #2563eb !important;
+  box-shadow: none !important;
+}
+
+/* Buttons */
+.btn-primary {
+  background: #2563eb;
+  border: none;
+}
+
+.btn-success {
+  background: #16a34a;
+  border: none;
+}
+
+.btn-danger {
+  background: #dc2626;
+  border: none;
+}
+
+.btn-warning {
+  border: none;
+}
+
+/* Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: white;
+}
+
+/* Links */
+a {
+  text-decoration: none;
+}
+
+/* Badges */
+.badge {
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111827;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+.table th {
+    color: #cbd5e1;
+    font-weight: 600;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+.badge {
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
