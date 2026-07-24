@@ -1,4 +1,7 @@
 from flask import Flask
+from models.admin import Admin
+from services.auth_service import AuthService
+from utils.database import db
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from flask_socketio import SocketIO
@@ -35,24 +38,24 @@ socketio = SocketIO(app, cors_allowed_origins="*")
 
 # Initialize Database
 init_db(app)
-from models.admin import Admin
-from services.auth_service import AuthService
-from utils.database import db
-
 with app.app_context():
-    admin = Admin.query.filter_by(email="admin@example.com").first()
+    try:
+        admin = Admin.query.filter_by(email="admin@example.com").first()
 
-    if not admin:
-        admin = Admin(
-            username="admin",
-            email="admin@example.com",
-            password=AuthService.hash_password("admin123")
-        )
-        db.session.add(admin)
-        db.session.commit()
-        print("✅ Default admin created successfully!")
-    else:
-        print("✅ Default admin already exists.")
+        if not admin:
+            admin = Admin(
+                username="admin",
+                email="admin@example.com",
+                password=AuthService.hash_password("admin123")
+            )
+            db.session.add(admin)
+            db.session.commit()
+            print("✅ Default admin created successfully!")
+        else:
+            print("✅ Default admin already exists.")
+
+    except Exception as e:
+        print("❌ Error creating default admin:", e)
 app.register_blueprint(auth_bp)
 app.register_blueprint(employee_bp)
 app.register_blueprint(attendance_bp)
